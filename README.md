@@ -43,10 +43,10 @@ A deep learning project to predict water potability using neural networks. Model
    - [View Notebook](notebooks/Afsa_Umutoniwase_Water_Quality_Model.ipynb)
 
 4. **Leslie Isaro**
-   - L1 Regularization (λ=0.001)
-   - Adagrad Optimizer
-   - Accuracy: 66.7%
-   - F1 Score: 0.390
+   - L2 Regularization (λ=0.001)
+   - AdamW Optimizer
+   - Accuracy: 67.1%
+   - F1 Score: 0.567
    - [View Notebook](notebooks/Leslie_Water_Quality_Model.ipynb)
 
 5. **Eddy Gasana**
