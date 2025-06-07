@@ -65,7 +65,7 @@ The training process benefited from the regularization techniques and callbacks,
 
 
 #### Critical Gaps:
-❗ 58% of safe water sources undetected (low Potable recall)
-❗ 13% of contaminated water misclassified as safe (Non-Potable precision)
+- ❗ 58% of safe water sources undetected (low Potable recall)
+- ❗ 13% of contaminated water misclassified as safe (Non-Potable precision)
 
 In summary, this experiments underscored the importance of regularization and imbalance handling in neural network design. In future iterations, I would explore alternative architectures like, wider networks(256-unit first layer, adding attention mechanism before final Dense layer), applying quantile transformation to other noisy features, increase portable class weight penalty by 1.5x, use a L1/L2 combo (ElasticNet) in first layer to address these challenges and potentially elevate performance.
