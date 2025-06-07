@@ -47,14 +47,14 @@ A deep learning project to predict water potability using neural networks. Model
    - Adagrad Optimizer
    - Accuracy: 66.7%
    - F1 Score: 0.390
-   - - [View Notebook](notebooks/Leslie_Water_Quality_Model.ipynb)
+   - [View Notebook](notebooks/Leslie_Water_Quality_Model.ipynb)
 
 5. **Eddy Gasana**
    - RMSprop Optimizer
    - Accuracy: 65.4%
    - Precision: 0.750
    - Recall: 0.172
-   - - [View Notebook](notebooks/Eddy_Water_Quality_Model.ipynb)
+   - [View Notebook](notebooks/Eddy_Water_Quality_Model.ipynb)
 
 ## Dataset
 
