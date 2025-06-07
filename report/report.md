@@ -555,7 +555,7 @@ Future work would explore:
 - Monitor F1-score during EarlyStopping instead of val_loss
 - Tune learning rate adaptively for even better convergence
 
-## Eddy Gasana (Member 5)
+## Eddy Gasana (Member 1)
 ### Eddy's Model Findings Report
 
 ### Model Architecture & Rationale
