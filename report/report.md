@@ -3,7 +3,7 @@
 ## Summary Table
 | Train Instance | Engineer Name | Regularizer | Optimizer | Early Stopping         | Dropout Rate                | Accuracy | F1 Score | Recall | Precision |
 |:--------------:|:-------------:|:-----------:|:---------:|:----------------------:|:---------------------------:|:--------:|:--------:|:------:|:---------:|
-| 1              | Eddy          | L1          | SGD       | xxxxxxxxxxxxxxxxxxxx   | xxxxxxxxxxxxxxxxx           | xxxxxx   | xxxxxx   | xxxxxx | xxxxxx    |
+| 1              | Eddy          | L1          | SGD       | Patience=10   | 0.2           | 0.697   | 0.508   | 0.401 | 0.694    |
 | 2              | Chol          | L2          | RMSprop   | Patience = 5           | 0.5                         | 0.6524   | 0.1576   | 0.0865 | 0.8889    |
 | 3              | Leslie        | L2        | AdamW      | Patience = 5            | 0.2                          | 0.671   | 0.567   | 0.552 | 0.582    |
 | 4              | Abiodun       | L2          | Adam      | val_loss, patience=10  | 0.5 → 0.4 → 0.365           | 0.7012   | 0.6829   | 0.7012 | 0.6940    |
@@ -555,7 +555,7 @@ Future work would explore:
 - Monitor F1-score during EarlyStopping instead of val_loss
 - Tune learning rate adaptively for even better convergence
 
-## Eddy Gasana (Member 5)
+## Eddy Gasana (Member 1)
 ### Eddy's Model Findings Report
 
 ### Model Architecture & Rationale
