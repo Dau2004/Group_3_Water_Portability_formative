@@ -554,3 +554,101 @@ Future work would explore:
 - Try L2 regularization for smoother weight decay
 - Monitor F1-score during EarlyStopping instead of val_loss
 - Tune learning rate adaptively for even better convergence
+
+## Eddy Gasana (Member 5)
+### Eddy's Model Findings Report
+
+### Model Architecture & Rationale
+
+🔘 **Regularization: L1 Regularization + Dropout (0.2)**
+Used L1 regularization to encourage sparsity in the network weights, improving model generalization. A dropout rate of 0.2 was applied after each dense layer to further reduce overfitting by randomly deactivating 20% of the neurons during training.
+
+🔘 **Optimizer & Learning Rate: SGD (lr = 0.010, momentum = 0.9)**
+The SGD optimizer with momentum helped smooth the gradient updates, accelerating convergence and reducing oscillation. A learning rate of 0.010 allowed stable but relatively quick updates without overshooting.
+
+🔘 **Early Stopping: Monitored val_loss, patience = 10**
+Training was stopped early when validation loss ceased improving after 10 epochs. This approach balanced training efficiency and generalization, helping avoid overfitting.
+
+🔘 **Loss & Metrics**
+Binary cross-entropy was used for binary classification. Metrics included accuracy, precision, and recall to assess performance considering class imbalance.
+
+### Training Summaries, Results, and Conclusions
+
+- **Epochs**: up to 2000 (EarlyStopping engaged at epoch 51)
+- **Batch Size**: 32 (default)
+- **Activation Functions**: ReLU (hidden), Sigmoid (output)
+
+#### Key Performance Metrics
+| Metric         | Value |
+|----------------|--------|
+| Accuracy       | 0.697  |
+| Precision      | 0.694  |
+| Recall         | 0.401  |
+| F1-Score       | 0.508  |
+
+### Summary and Conclusions
+
+The model achieved a balanced accuracy (69.7%) and strong precision (69.4%) in identifying potable water. However, it had moderate recall (40.1%), indicating a considerable number of actual potable cases were missed.
+
+**Main Tradeoff:** Prioritized correct predictions when it flagged potable water (precision) but at the cost of missing many actual potable instances (low recall).
+
+### Insights from Experiments and Challenges Faced
+
+#### Insights
+- **L1 Regularization**: Helped sparsify the weights, improving generalization but possibly pruning too aggressively.
+- **Dropout**: At 0.2, provided a balanced regularization effect—less prone to underfitting than larger rates.
+- **SGD with Momentum**: Offered stable and consistent learning but may converge more slowly than adaptive optimizers like Adam.
+- **EarlyStopping**: Prevented overfitting but may have limited further recall gains.
+
+#### Challenges:
+- **Class Imbalance**: Affected the model's ability to recall potable cases. Class weighting was applied, but further improvement might require SMOTE or loss adjustment.
+- **Recall Bottleneck**: Due to conservative predictions and limited model depth.
+
+### Eddy's Model Comparison Report
+
+#### Metrics Summary
+| **Model**  | **Accuracy** | **Precision** | **Recall** | **F1-Score** | **AUC-ROC** |
+|------------|--------------|---------------|------------|--------------|-------------|
+| **Abiodun** | 0.7012       | 0.6940        | 0.7012     | 0.6829       | 0.6884     |
+| **Chol**    | 0.6524       | 0.8889        | 0.0865     | 0.1576       | 0.6418     |
+| **Afsa**    | 0.6900       | 0.7000        | 0.6200     | 0.6100       | N/A        |
+| **Leslie**  | 0.6650       | 0.5890        | 0.4640     | 0.5190       | N/A        |
+| **Eddy**    | 0.6970       | 0.6940        | 0.4010     | 0.5080       | N/A        |
+
+### Comparison with Each Teammate's Model
+
+#### Eddy vs. Abiodun
+- F1: 0.5080 vs. 0.6829 → Abiodun's model has superior balance.
+- Recall: 0.4010 vs. 0.7012 → Abiodun detects more potable cases.
+- Precision: Equal at 0.6940 → Both equally confident in potable predictions.
+
+#### Eddy vs. Chol
+- F1: 0.5080 vs. 0.1576 → My model is significantly more balanced.
+- Recall: 0.4010 vs. 0.0865 → Much better at identifying potable water.
+- Precision: 0.6940 vs. 0.8889 → Chol is more conservative, predicting fewer but more accurate positives.
+
+#### Eddy vs. Leslie
+- F1: 0.5080 vs. 0.5190 → Close in balance, slightly lower.
+- Recall: 0.4010 vs. 0.4640 → Leslie detects more potables.
+- Precision: 0.6940 vs. 0.5890 → My model is more selective.
+
+#### Eddy vs. Afsa
+- F1: 0.5080 vs. 0.6100 → Afsa’s model is better balanced.
+- Recall: 0.4010 vs. 0.6200 → Afsa detects more potable water.
+- Precision: 0.6940 vs. 0.7000 → Nearly identical.
+
+### Reasons for My Model’s Behavior
+1. **L1 Regularization**: May have reduced model complexity excessively.
+2. **SGD Optimizer**: Slower convergence compared to adaptive methods.
+3. **EarlyStopping**: May have stopped before recall could improve.
+4. **Dropout (0.2)**: Balanced regularization, avoiding underfitting.
+
+### Conclusion
+
+My model offers a high precision and decent accuracy, making it reliable for confirming potable water, though less aggressive in catching all such cases. It is moderately balanced but can benefit from recall-improving strategies like:
+
+- Class weighting adjustments or focal loss
+- Additional hidden layers or units
+- Switch from L1 to L2 or ElasticNet regularization
+- Use of adaptive optimizers like Adam or RMSprop
+- Monitoring F1-Score during EarlyStopping
