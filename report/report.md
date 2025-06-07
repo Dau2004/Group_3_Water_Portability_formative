@@ -280,3 +280,169 @@ Future work would explore:
 - Optimizing for balanced metrics like F1, not just precision  
 - Deepening the architecture (adding a 128-unit layer)  
 
+## Leslie Isaro (Member 3)
+
+### Model Architecture & Rationale
+
+🔘 **Regularization: L2 (0.001)**  
+L2 regularization was applied to all dense layers with a strength of 0.001. This prevents overfitting by discouraging large weight values while still allowing all features to contribute to learning — particularly important when all 9 water-quality indicators may have value.
+
+🔘 **Dropout Rate: Fixed (0.20)**  
+A fixed dropout rate of 0.2 was used after both hidden layers to provide light regularization. This moderately suppresses co-adaptation between neurons while retaining learning capacity — a trade-off for stability and generalization.
+
+🔘 **Optimizer & Learning Rate: AdamW (lr = 0.001, weight_decay = 0.001)**  
+AdamW was chosen for its adaptive learning capabilities and its decoupled weight decay, which enforces L2 regularization directly through the optimizer update step. This pairing of optimizer and regularization provides robust, principled convergence.
+
+🔘 **Early Stopping**  
+Early stopping was implemented with a patience of 5, monitoring validation loss. This ensured training stopped once performance plateaued and restored the best model weights. This improved both training efficiency and generalization.
+
+🔘 **Class Weights**  
+To address the imbalance in the target classes, class weights were computed using `compute_class_weight('balanced')`. This encouraged the model to take underrepresented potable samples (class 1) more seriously during training, improving recall and fairness.
+
+### Training Summaries, Results, and Conclusions
+
+The model was trained for up to 4000 epochs with early stopping triggered after convergence. It used binary cross-entropy loss, AdamW optimizer, and evaluation metrics including accuracy, precision, recall, and F1-score.
+
+#### Classification Report
+
+#### Key Performance Metrics
+| Metric         | Value |
+|----------------|--------|
+| Accuracy       | 0.671  |
+| Precision      | 0.582  |
+| Recall         | 0.552  |
+| F1-Score       | 0.567  |
+| AUC-ROC        | N/A    |
+
+#### Summary and Conclusions
+Leslie's model achieved a well-balanced performance across all metrics. While not the highest performer overall, it maintained stable precision and recall, giving it a strong **F1-score of 0.567**. This reflects the model's ability to detect potable water samples more reliably than overly conservative models (e.g., Chol's).
+
+The architecture was simpler (64 → 32) but highly stable due to AdamW, L2, and class weights. Recall and F1 are especially improved over models that focused too much on precision.
+
+While effective, future improvements might come from increasing model depth (e.g., 128 → 64 → 32), tuning dropout progressively, or adjusting classification thresholds to better balance precision-recall trade-offs.
+
+### Insights from Experiments and Challenges Faced
+
+### AdamW Improved Generalization
+
+Switching from `Adam` and `SGD` to `AdamW` led to more stable training and better generalization. Because AdamW decouples weight decay from the gradient update, it applied regularization more cleanly. This helped reduce overfitting compared to earlier runs using `SGD` and standard L2.
+
+---
+
+### Class Weights Boosted Recall
+
+Introducing `class_weight='balanced'` significantly improved the model’s ability to detect *potable* samples (minority class). Prior to class weighting, recall was consistently below 0.35; after weighting, it reached **0.55**, contributing to a better F1 score.
+
+---
+
+### Shallow Networks Can Compete
+
+Even with just two hidden layers (64 → 32 units), the model performed well. While deeper networks may offer more representation power, the correct use of regularization, dropout, and optimizer choice enabled competitive results.
+
+
+#### Challenges
+
+### Low Initial Recall
+
+Early model versions using `SGD` and no class weighting had high accuracy but recall below 0.30, meaning the model frequently failed to detect potable water. This was unacceptable in the context of water safety. Class weighting helped, but recall still lagged behind deeper models.
+
+---
+
+### Overfitting on Small Feature Space
+
+Despite using dropout and L2, validation loss would occasionally spike after a few epochs — especially when using a higher dropout rate (0.3+). With only 9 features, regularization needed to be carefully balanced to avoid underfitting.
+
+---
+
+### Optimizer Tradeoffs
+
+`SGD` with momentum proved too slow to converge and often plateaued early unless tuned carefully. `Adam` helped but sometimes overfitted. `AdamW` offered the best balance, though it required experimenting with `weight_decay`.
+
+
+### Leslie's Model Comparison Report
+
+#### Metrics Summary
+
+| **Model** | **Accuracy** | **Precision** | **Recall** | **F1-Score** |
+|-----------|--------------|---------------|------------|--------------|
+| **Leslie**  | 0.671        | 0.582         | 0.552      | 0.567        |
+| **Chol**    | 0.652        | 0.888         | 0.087      | 0.158        |
+| **Afsa**    | 0.690        | 0.700         | 0.620      | 0.610        |
+| **Eddy**    | 0.697        | 0.694         | 0.401      | 0.508        |
+
+#### Interpretation of Metrics
+
+- **F1 Score**: Leslie outperforms Chol and Eddy on F1 score, showing better balance between detecting potable water and avoiding false positives.
+- **Recall**: Leslie's recall (0.552) is significantly better than Chol’s and Eddy’s, meaning more actual potable water samples were detected.
+- **Precision**: Leslie maintains respectable precision (0.582), ensuring predictions aren't overly risky.
+
+#### Comparison with Each Teammate's Model
+
+**Leslie vs. Chol**  
+| **Metric**   | **Leslie** | **Chol** |
+|--------------|------------|----------|
+| **F1**       | 0.567      | 0.158    |
+| **Recall**   | 0.552      | 0.087    |
+| **Precision**| 0.582      | 0.889    |
+
+### Why Leslie’s Model Is Better:
+
+- Chol’s model sacrifices recall for very high precision — it predicts very few samples as potable, causing most true positives to be missed (recall = 0.087).
+- Leslie’s model maintains a healthier balance, with solid precision **and** recall, leading to a **3.5× better F1 score**.
+
+### Architectural Differences:
+
+- Leslie uses **L2 regularization** (less aggressive than Chol’s L1), **AdamW**, and lower dropout (0.2 vs. 0.5), encouraging better learning.
+- Chol’s use of high dropout (0.5) and L1 may have limited feature learning too aggressively.
+
+**Leslie vs. Afsa**  
+| **Metric**   | **Leslie** | **Afsa** |
+|--------------|------------|----------|
+| F1           | 0.567      | 0.610    |
+| Recall       | 0.552      | 0.620    |
+| Precision    | 0.582      | 0.700    |
+
+### Why Afsa's Model Performs Slightly Better:
+
+- Afsa edges ahead in all metrics, particularly recall and F1.
+- The higher learning rate (0.002) and lighter regularization may have enabled better fit to the minority class.
+
+### Leslie's Advantages:
+
+- More regularized (**L2 + AdamW**) and thus potentially **more robust to overfitting**.
+- Comparable performance with a **more conservative and theoretically grounded setup**.
+
+
+**Leslie vs. Eddy**  
+| **Metric**   | **Leslie** | **Eddy** |
+|--------------|------------|----------|
+| F1           | 0.567      | 0.508    |
+| Recall       | 0.552      | 0.401    |
+| Precision    | 0.582      | 0.694    |
+
+### Why Leslie’s Model Is Better:
+
+- Better recall (+15 percentage points), resulting in higher F1.
+- Slightly lower precision is acceptable given much better balance overall.
+
+### Model Differences:
+
+- Eddy uses **L1 regularization** and an inverted architecture (32 → 64 → 128), which may overfit or underrepresent key features early.
+- Leslie's consistent **L2 regularization** and classic deep-to-shallow flow (64 → 32) allow more stable learning.
+
+
+### Conclusion
+
+My model achieved a balanced and consistent performance in classifying water potability, with an **F1 score of 0.567**, **recall of 0.552**, and **precision of 0.582**. These results reflect a model that maintains fairness between correctly identifying potable water and minimizing false positives — a critical balance in public health applications.
+
+Compared to teammates’ models, mine outperformed those that prioritized only one metric (e.g., Chol’s high precision but very low recall), by providing more reliable and actionable predictions. While not the absolute top in any single metric, my model ranked solidly across the board, making it a dependable baseline for real-world use.
+
+The use of **L2 regularization**, **AdamW optimizer**, **class weighting**, and **early stopping** contributed to effective generalization and training stability. However, the fixed dropout and limited model depth may have constrained performance, especially in identifying more subtle patterns related to potable water.
+
+In future iterations, I would explore:
+- Adding a third hidden layer for deeper pattern recognition
+- Tuning dropout rates progressively across layers
+- Adjusting the classification threshold to improve recall
+- Increasing class 1 penalty weight beyond `balanced` default
+
+Overall, this project highlights the importance of thoughtful architecture, regularization, and evaluation in imbalanced binary classification problems. My model strikes a valuable trade-off and provides a strong foundation for further refinement.
