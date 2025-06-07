@@ -1,5 +1,6 @@
 # Water Quality Model Analysis Report
 
+## Individual Analysis Reports
 
 ## Abiodun Kumuyi (Member 4)
 
