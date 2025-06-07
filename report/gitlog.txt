@@ -1,0 +1,362 @@
+commit 773476c542a2baf15dd77f650063550ac4c3a919
+Merge: 1bb5486 1966835
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 23:36:01 2025 +0200
+
+    Merge branch 'main' of https://github.com/Dau2004/Group_3_Water_Portability_formative
+
+commit 1966835654fc9a94e03f9b7a6f9c50ad4f5ff0e8
+Author: Eddy GASANA <e.gasana@alustudent.com>
+Date:   Sat Jun 7 23:35:25 2025 +0200
+
+    Update report.md
+
+commit 1bb548649324ebd32e14e98c210091f2c621a03e
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 23:35:24 2025 +0200
+
+    discarding old notebook
+
+commit d7a6d87b837156e50c7fefb64fa590e0ba771048
+Author: Eddy GASANA <e.gasana@alustudent.com>
+Date:   Sat Jun 7 23:34:37 2025 +0200
+
+    Update report.md
+
+commit eda373400356ada49ed052ff2cb99c9ca669d62c
+Merge: 5ac4d1d e11d9c8
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 23:34:14 2025 +0200
+
+    Merge branch 'main' of https://github.com/Dau2004/Group_3_Water_Portability_formative
+
+commit e11d9c803ecab143344b1b7040d05a7f95dfe732
+Author: Eddy GASANA <e.gasana@alustudent.com>
+Date:   Sat Jun 7 23:31:48 2025 +0200
+
+    Update README.md
+
+commit 5ac4d1db785d8d75361b3eba909cd3ee11189631
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 23:31:25 2025 +0200
+
+    updating leslie's params
+
+commit 5157ed35a8709c4a4abcd99cd37e28b7713ba66f
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 23:27:47 2025 +0200
+
+    report adjustment
+
+commit 71e2455f78a340d7503a84c541a57c76cc83026f
+Author: Eddy GASANA <e.gasana@alustudent.com>
+Date:   Sat Jun 7 23:23:30 2025 +0200
+
+    Eddy's model findings & comparison report added
+
+commit c03af0bae444f94512d7a6e779c93dd0680724f5
+Author: Afsa Umutoniwase <a.umutoniwa@alustudent.com>
+Date:   Sat Jun 7 23:05:34 2025 +0200
+
+    Update README.md adding in my true metrics
+
+commit 4814b160ea3a13bb05ac034dc6566de7af583064
+Author: Afsa Umutoniwase <a.umutoniwa@alustudent.com>
+Date:   Sat Jun 7 22:56:48 2025 +0200
+
+    Update report.md adding my comprehensive part by comparing my models to others.
+
+commit 136ad5f8309e3d0fb6cc3d2a15d02e16672aac7e
+Author: Afsa Umutoniwase <a.umutoniwa@alustudent.com>
+Date:   Sat Jun 7 22:13:40 2025 +0200
+
+    Update report.md to add my model summary
+
+commit d10c5b3c2e09ffe079ab65a27b51a9cff7a5364d
+Author: Leslie Isaro <144017545+l-isaro@users.noreply.github.com>
+Date:   Sat Jun 7 22:07:47 2025 +0200
+
+    Add model configuration
+
+commit 4908309e5271be77394b65f14d5865ad1950e259
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 20:57:44 2025 +0200
+
+    Updating README.md
+
+commit 84f2d8bb2b4a79a7dbe30f814e008f5c896fa3b4
+Merge: 85790d1 012bc1e
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 20:54:20 2025 +0200
+
+    Merge branch 'main' of https://github.com/Dau2004/Group_3_Water_Portability_formative
+
+commit 85790d1dbd0f4a5d5576b02eef4b38510b966eaa
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 20:54:14 2025 +0200
+
+    Updating README.md
+
+commit 012bc1e2a57966b8327bb164dc40de5093cc8cd1
+Author: Leslie Isaro <144017545+l-isaro@users.noreply.github.com>
+Date:   Sat Jun 7 20:38:27 2025 +0200
+
+    Add report to report.md
+
+commit 1d5dac08e56e8f3e17969eb28837af4744dac552
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Sat Jun 7 20:20:10 2025 +0200
+
+    Delete report.md
+
+commit 79cc453f287ef08c38ca06c5f42c2240625e3b41
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Sat Jun 7 20:19:45 2025 +0200
+
+    Delete report/git_log.txt
+
+commit c62b0f0929f5e371d7d8b1f123d65db97174c321
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Sat Jun 7 20:19:13 2025 +0200
+
+    report file
+
+commit 201d621f2d5f84f2b10ce02197cfab88ed97e66d
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Sat Jun 7 20:16:53 2025 +0200
+
+    Rename report/deep_report.md to report.md
+
+commit f201c8e0c99d2f372b5e48b071e8415fb1cbd7bf
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Sat Jun 7 19:58:42 2025 +0200
+
+    adding my models details
+
+commit c2d518b6dc23090516ad39fa4f91518b42a81f49
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Sat Jun 7 19:52:55 2025 +0200
+
+    Delete git_log.txt
+
+commit 86bdc43f57080f0e45f49483e9a0c235b99daa01
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Sat Jun 7 19:51:39 2025 +0200
+
+    moving gitlog.txt to report directory
+
+commit 100f2a32df9dac55f6343712d2e22dba16b835fa
+Author: Dau2004 <c.dau@alustudent.com>
+Date:   Sat Jun 7 19:48:10 2025 +0200
+
+    adding git log.txt
+
+commit feb04c6d8b1dd00f2f9630fa24d0d6f757dfe880
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Sat Jun 7 19:26:14 2025 +0200
+
+    Rename report.md to deep_report.md
+
+commit 85e1f096429ba91a3aab5c06e893d2e57c934a67
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Sat Jun 7 19:24:16 2025 +0200
+
+    chol report
+
+commit 83384d01dabb55f020576a54bb61d4170cfd0c62
+Author: Abiodun Kumuyi <127477708+akumuyi@users.noreply.github.com>
+Date:   Sat Jun 7 19:11:42 2025 +0200
+
+    Adding Abiodun's model
+
+commit 215cc0341f96197843673ed816021c55ca74e19d
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 18:54:33 2025 +0200
+
+    Updating model comparisons
+
+commit 3e9e4c993117570a0bf2f0ad87280863f4e4e7f5
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 18:31:15 2025 +0200
+
+    Updating report section
+
+commit 90c2d125f931c4420e0ebdbf6eca262594e9b5f7
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 18:13:30 2025 +0200
+
+    Updating report section
+
+commit 29017ab75d81143915b1fcd86d326c27b7c9c59c
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 18:04:50 2025 +0200
+
+    Updating report section
+
+commit 4e51eb38751ccee334a21757739d8dadef09a8b8
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 18:03:44 2025 +0200
+
+    Updating report section
+
+commit 6f38945977194e0cdf5c0102bfe5365824229bf9
+Author: Abiodun Kumuyi <127477708+akumuyi@users.noreply.github.com>
+Date:   Sat Jun 7 17:18:13 2025 +0200
+
+    Cleaning pipeline
+
+commit a90fd0d17e08c663b9e58c1c9d762b452c3430f9
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 17:17:13 2025 +0200
+
+    Restructuring hyperparameter definitions
+
+commit 73e2fe366ed9dfc8d4e64c07a690746c73451fcf
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 16:39:36 2025 +0200
+
+    Creating report.md
+
+commit d1a410bf2d36361dca4f306397a14a8e2848ae13
+Author: akumuyi <a.kumuyi@alustudent.com>
+Date:   Sat Jun 7 16:35:30 2025 +0200
+
+    Reorganizing the repository
+
+commit 86db9130e0071046137fd80736b6822b08b26b96
+Author: Eddy GASANA <e.gasana@alustudent.com>
+Date:   Sat Jun 7 14:06:45 2025 +0200
+
+    Posted group repor
+
+commit 49987e1dc5d46637658b5725aff3961bc2c17fb9
+Author: Eddy GASANA <e.gasana@alustudent.com>
+Date:   Sat Jun 7 13:43:25 2025 +0200
+
+    Created using Colab
+
+commit 49ae38a9fb46530fe6a7f50a6d12b892e35ee26c
+Author: Eddy GASANA <e.gasana@alustudent.com>
+Date:   Sat Jun 7 13:35:30 2025 +0200
+
+    Created using Colab
+
+commit 3bf5c9080872ba7910aa2d1c331b441ff9010169
+Author: Leslie Isaro <144017545+l-isaro@users.noreply.github.com>
+Date:   Sat Jun 7 12:33:58 2025 +0200
+
+    Replaced Adam with AdamW optimizer
+
+commit 24c46b426bf80030b335b5da539a6cbc346b6304
+Author: Leslie Isaro <144017545+l-isaro@users.noreply.github.com>
+Date:   Sat Jun 7 10:09:45 2025 +0200
+
+    Add member 3 model definition
+
+commit f7d9c8bd7831941c9254fff09bf6edfe3c4e064b
+Author: Leslie Isaro <144017545+l-isaro@users.noreply.github.com>
+Date:   Sat Jun 7 09:58:06 2025 +0200
+
+    Cleaned up notebook structure and add plot
+
+commit 94eb6c3f01326396a02ce229f0c4295c49a27448
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Fri Jun 6 23:17:44 2025 +0200
+
+    updated
+
+commit dff1d8de7c2e69c24ed4c40ba721a718c90b70fb
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Fri Jun 6 22:14:12 2025 +0200
+
+    Rename Water_Quality_Model.ipynb to Main_Notebook_Water_Quality_Model.ipynb
+
+commit 7ecad08e7377da21a71b3583af12ba7bc955b0f1
+Author: Afsa Umutoniwase <a.umutoniwa@alustudent.com>
+Date:   Fri Jun 6 22:04:12 2025 +0200
+
+    adding my model in the main file
+
+commit a325d9dd3f924b8b1ca3c5eee76278d586871962
+Author: Afsa Umutoniwase <a.umutoniwa@alustudent.com>
+Date:   Fri Jun 6 21:29:48 2025 +0200
+
+    updating a few things.
+
+commit 05485a33c92a5f8d8b3ddb79444448782660ff1f
+Author: Abiodun Kumuyi <127477708+akumuyi@users.noreply.github.com>
+Date:   Fri Jun 6 21:19:59 2025 +0200
+
+    Abiodun's notebook
+
+commit a51ec30c92e046d46d8da2fe88188efed5c1f0a8
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Fri Jun 6 21:16:06 2025 +0200
+
+    chol_notebook
+
+commit 9951c7f93ef96dac58e7995d6f5fe5555d7c8659
+Author: Leslie Isaro <144017545+l-isaro@users.noreply.github.com>
+Date:   Fri Jun 6 21:15:10 2025 +0200
+
+    Add notebook to main branch
+
+commit 4eb72c6f73d3f64f271d1923558b9cf886c82aa7
+Author: Afsa Umutoniwase <a.umutoniwa@alustudent.com>
+Date:   Fri Jun 6 21:12:27 2025 +0200
+
+    Created using Colab
+
+commit eab9fddb5dd8c6875319e57cd1930bc9e0574996
+Merge: 0eb42a1 2d3ea58
+Author: Abiodun Kumuyi <127477708+akumuyi@users.noreply.github.com>
+Date:   Fri Jun 6 21:09:00 2025 +0200
+
+    Merge pull request #3 from Dau2004/revert-2-abiodun
+    
+    Revert "Uploading my notebook"
+
+commit 2d3ea58b77303c8224f79aa5b2a07b69e658753b
+Author: Abiodun Kumuyi <127477708+akumuyi@users.noreply.github.com>
+Date:   Fri Jun 6 21:06:58 2025 +0200
+
+    Revert "Uploading my notebook"
+
+commit 0eb42a1436f0fedecba6fa15af394d2e71d77483
+Merge: 839d6f0 01791f5
+Author: Abiodun Kumuyi <127477708+akumuyi@users.noreply.github.com>
+Date:   Fri Jun 6 21:02:51 2025 +0200
+
+    Merge pull request #2 from Dau2004/abiodun
+    
+    Uploading my notebook
+
+commit 01791f5b9fbaa6e6af38d1859a36be20b946f5ab
+Author: Abiodun Kumuyi <127477708+akumuyi@users.noreply.github.com>
+Date:   Fri Jun 6 20:20:29 2025 +0200
+
+    Created using Colab
+
+commit 839d6f0b97f9b0df60824680acadc7f197e8b039
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Wed Jun 4 20:53:26 2025 +0200
+
+    first work
+
+commit dcfbfd7718a9abd2f4a628ff846e310f35eded93
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Tue Jun 3 02:59:40 2025 +0200
+
+    Update README.md
+
+commit 0f79533d480972b76c456e0f02b75c263c63e46a
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Tue Jun 3 02:49:11 2025 +0200
+
+    cleaned dataset
+
+commit 7f0d16bba871c03c73ae787d8439cf4814d10522
+Author: Chol Daniel Deng Dau <144565388+Dau2004@users.noreply.github.com>
+Date:   Mon Jun 2 20:58:40 2025 +0200
+
+    Create README.md
