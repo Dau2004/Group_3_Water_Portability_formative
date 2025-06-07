@@ -7,7 +7,7 @@
 | 2              | Chol          | L2          | RMSprop   | Patience = 5           | 0.5                         | 0.6524   | 0.1576   | 0.0865 | 0.8889    |
 | 3              | Leslie        | L2        | AdamW      | Patience = 5            | 0.2                          | 0.671   | 0.567   | 0.552 | 0.582    |
 | 4              | Abiodun       | L2          | Adam      | val_loss, patience=10  | 0.5 → 0.4 → 0.365           | 0.7012   | 0.6829   | 0.7012 | 0.6940    |
-| 5              | Afsa          | L1/L2       | Adamax    | xxxxxxxxxxxxxxxxxxxx   | xxxxxxxxxxxxxxxxx           | xxxxxx   | xxxxxx   | xxxxxx | xxxxxx    |
+| 5              | Afsa          | Dropout       | Adam    | Patience = 10   | 0.4 (1st), 0.3 (2nd)           | 0.69   | 0.44   | 0.32 | 0.73    |
 
 ## Individual Analysis Reports
 
