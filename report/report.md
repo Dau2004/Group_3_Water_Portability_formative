@@ -79,3 +79,82 @@ The training process benefited from the regularization techniques and callbacks,
 - ❗ 13% of contaminated water misclassified as safe (Non-Potable precision)
 
 In summary, this experiments underscored the importance of regularization and imbalance handling in neural network design. In future iterations, I would explore alternative architectures like, wider networks(256-unit first layer, adding attention mechanism before final Dense layer), applying quantile transformation to other noisy features, increase portable class weight penalty by 1.5x, use a L1/L2 combo (ElasticNet) in first layer to address these challenges and potentially elevate performance.
+
+## Abiodun's Model Comparison Report
+
+### Metrics Summary
+
+Here are the performance metrics for each model:
+
+| **Model**  | **Accuracy** | **Precision** | **Recall** | **F1-Score** | **AUC-ROC** |
+|------------|--------------|---------------|------------|--------------|-------------|
+| **Abiodun** | 0.7012       | 0.6940        | 0.7012     | 0.6829       | 0.6884     |
+| **Chol**    | 0.6524       | 0.8889        | 0.0865     | 0.1576       | 0.6418     |
+| **Afsa**    | 0.6900       | 0.7000        | 0.6200     | 0.6100       | N/A        |
+| **Leslie**  | 0.6650       | 0.5890        | 0.4640     | 0.5190       | N/A        |
+| **Eddy**    | 0.6970       | 0.6940        | 0.4010     | 0.5080       | N/A        |
+
+### Interpretation of Metrics
+
+- **F1 Score**: The harmonic mean of precision and recall, critical for imbalanced datasets. My model's F1 score (0.6829) is the highest, indicating a strong balance between precision and recall. Chol's F1 score (0.1576) is the lowest, suggesting poor overall performance.
+- **Recall**: Measures the ability to identify Potable water samples (minority class). My model's recall (0.7012) is the highest, meaning it excels at detecting Potable water, while Chol's (0.0865) is extremely low, missing most positive cases.
+- **Precision**: Indicates the accuracy of positive predictions. Chol's precision (0.8889) is the highest but comes at the expense of recall. My model's precision (0.6940) is balanced and reasonable.
+
+### Comparison with Each Teammate's Model
+
+#### 1. Abiodun vs. Chol
+- **Metrics**:
+  - F1 Score: 0.6829 vs. 0.1576 → My model is far superior.
+  - Recall: 0.7012 vs. 0.0865 → My model detects far more Potable water samples.
+  - Precision: 0.6940 vs. 0.8889 → Chol's precision is higher but misleading due to low recall.
+- **Why My Model is Better**:
+  - My model balances precision and recall effectively, while Chol's model prioritizes precision at the cost of recall, likely predicting very few positives. This is reflected in its low F1 score and recall.
+  - **Architecture**: My model uses a deeper structure (128 → 64 → 32 units) with L2 regularization and progressive dropout (0.5 → 0.4 → 0.365), enabling better feature learning and regularization. Chol’s simpler model (64 → 32 units) with L1 regularization and EarlyStopping on validation precision may have biased it toward the majority class.
+
+#### 2. Abiodun vs. Afsa
+- **Metrics**:
+  - F1 Score: 0.6829 vs. 0.6100 → My model performs better.
+  - Recall: 0.7012 vs. 0.6200 → My model has higher recall.
+  - Precision: 0.6940 vs. 0.7000 → Nearly identical precision.
+- **Why My Model is Better**:
+  - Higher recall improves detection of Potable water, boosting my F1 score.
+  - **Regularization**: My model uses L2 regularization and Batch Normalization, enhancing generalization. Afsa’s model lacks regularization, and its higher learning rate (0.002 vs. 0.001) may lead to suboptimal convergence.
+
+#### 3. Abiodun vs. Leslie
+- **Metrics**:
+  - F1 Score: 0.6829 vs. 0.5190 → My model is superior.
+  - Recall: 0.7012 vs. 0.4640 → My model has much higher recall.
+  - Precision: 0.6940 vs. 0.5890 → My model has higher precision.
+- **Why My Model is Better**:
+  - My model outperforms across all key metrics, especially recall and F1 score.
+  - **Depth and Dropout**: My three-layer architecture (128 → 64 → 32) with progressive dropout outperforms Leslie’s two-layer model (64 → 32) with fixed dropout (0.20), offering better feature extraction and regularization.
+
+#### 4. Abiodun vs. Eddy
+- **Metrics**:
+  - F1 Score: 0.6829 vs. 0.5080 → My model is better.
+  - Recall: 0.7012 vs. 0.4010 → My model has significantly higher recall.
+  - Precision: 0.6940 vs. 0.6940 → Precision is identical.
+- **Why My Model is Better**:
+  - Higher recall improves minority class detection, leading to a better F1 score.
+  - **Optimizer and Regularization**: My use of Adam and L2 regularization outperforms Eddy’s SGD and L1 regularization. My layer progression (128 → 64 → 32) may capture features better than Eddy’s (32 → 64 → 128).
+
+#### Reasons for My Model’s Superior Performance
+
+1. **Deeper Architecture**:
+   - My model’s three hidden layers (128 → 64 → 32) allow it to learn more complex patterns compared to the shallower models of Chol (64 → 32) and Leslie (64 → 32) or Eddy’s different progression (32 → 64 → 128).
+
+2. **Progressive Dropout**:
+   - Dropout rates decrease (0.5 → 0.4 → 0.365) across layers, regularizing early layers more while preserving information in later ones. This contrasts with fixed dropout in other models (e.g., Leslie’s 0.20, Chol’s 0.5).
+
+3. **L2 Regularization and Batch Normalization**:
+   - L2 regularization prevents overfitting by penalizing large weights, and Batch Normalization stabilizes training. Chol and Eddy use L1 regularization, which may discard useful features, while Afsa lacks regularization entirely.
+
+4. **Optimizer and Learning Rate Scheduling**:
+   - Adam (learning rate 0.001) with ReduceLROnPlateau adapts the learning rate dynamically, likely outperforming Eddy’s SGD (0.010), Chol’s RMSprop (0.0005), or Afsa’s higher Adam rate (0.002).
+
+5. **Class Weights**:
+   - Like Leslie and Eddy, I use class weights to handle imbalance, but my model’s architecture and regularization maximize their effectiveness, as seen in the high recall.
+
+### Conclusion
+
+My model achieves the highest F1 score (0.6829) and recall (0.7012), making it the best performer for predicting water potability in this imbalanced dataset. It balances precision and recall effectively, unlike Chol’s model, which sacrifices recall for precision, or Afsa, Leslie, and Eddy’s models, which lag in recall and F1 score. The combination of a deeper architecture, progressive dropout, L2 regularization, Batch Normalization, and an adaptive optimizer drives its superior performance, aligning well with the task’s objective of accurately identifying Potable water.
