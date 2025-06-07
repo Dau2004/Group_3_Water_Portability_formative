@@ -36,10 +36,10 @@ A deep learning project to predict water potability using neural networks. Model
    - [View Notebook](notebooks/Chol_water_quality_portability.ipynb)
 
 3. **Afsa Umutoniwase**
-   - L2 Regularization (λ=0.002)
-   - Nadam Optimizer
-   - Accuracy: 74.3%
-   - F1 Score: 0.71
+   - Regularization: Dropout (0.4 after first layer, 0.3 after second)
+   - Optimizer: Adam (learning rate = 0.002)
+   - Accuracy: 69%
+   - F1 Score: 0.44
    - [View Notebook](notebooks/Afsa_Umutoniwase_Water_Quality_Model.ipynb)
 
 4. **Leslie Isaro**
@@ -80,7 +80,7 @@ Detailed performance analysis and model comparisons can be found in our [compreh
 |------------|---------------|------------|--------------|
 | **Abiodun** | 0.6940       | 0.7012     | 0.6829       |
 | **Chol**    | 0.8889       | 0.0865     | 0.1576       |
-| **Afsa**    | 0.7000       | 0.6200     | 0.6100       |
+| **Afsa**    | 0.7300       | 0.3200     | 0.4400       |
 | **Leslie**  | 0.5890       | 0.4640     | 0.5190       |
 | **Eddy**    | 0.6940       | 0.4010     | 0.5080       |
 
