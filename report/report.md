@@ -158,3 +158,123 @@ Here are the performance metrics for each model:
 ### Conclusion
 
 My model achieves the highest F1 score (0.6829) and recall (0.7012), making it the best performer for predicting water potability in this imbalanced dataset. It balances precision and recall effectively, unlike Chol’s model, which sacrifices recall for precision, or Afsa, Leslie, and Eddy’s models, which lag in recall and F1 score. The combination of a deeper architecture, progressive dropout, L2 regularization, Batch Normalization, and an adaptive optimizer drives its superior performance, aligning well with the task’s objective of accurately identifying Potable water.
+
+## Chol Daniel Deng (Member 2)
+
+### Model Architecture & Rationale
+
+🔘 **Regularization: L1 (0.001)**  
+I chose L1 regularization to encourage model sparsity and reduce overfitting. L1 forces some feature weights to zero, effectively performing feature selection. Given the potential noise and correlation in the 9 water quality features, I aimed to identify the most relevant predictors by penalizing unnecessary complexity.
+
+🔘 **Dropout Rate: 0.5**  
+A relatively high dropout rate of 0.5 was used after each dense layer to combat overfitting. This forces the model to avoid reliance on specific neurons and helps generalize better to unseen data.
+
+🔘 **Optimizer & Learning Rate: RMSprop (lr=0.0005, momentum=0.9)**  
+RMSprop was selected for its adaptive learning rate and effectiveness in dealing with non-stationary objectives. A relatively small learning rate (0.0005) was used to encourage stable convergence, especially since L1 regularization and high dropout can introduce training instability.
+
+🔘 **Early Stopping**  
+I employed EarlyStopping with a patience of 5 epochs, monitoring validation precision. The goal was to stop training once validation precision plateaued, aligning with the objective of reducing false positives in a sensitive application like water safety.
+
+🔘 **Class Weights**  
+Class imbalance was addressed by applying balanced class weights during training, ensuring that the minority potable class was given sufficient attention.
+
+### Training Summaries, Results, and Conclusions
+
+The model was trained for up to 100 epochs using binary cross-entropy loss and a batch size of 32, with performance evaluated on accuracy, precision, recall, and AUC metrics.
+
+#### Classification Report
+          precision    recall  f1-score   support
+Non-Potable 0.66 0.99 0.79 307
+Potable 0.89 0.09 0.16 185
+accuracy 0.65 492
+
+
+#### Key Performance Metrics
+| Metric         | Value    |
+|----------------|----------|
+| Accuracy       | 0.6524   |
+| Precision      | **0.8889** |
+| Recall         | 0.0865   |
+| F1-Score       | 0.1576   |
+| AUC-ROC        | 0.6418   |
+
+#### Summary and Conclusions
+My model achieved **very high precision (0.8889)** for the potable class but at the cost of **extremely low recall (0.0865)**. This means the model was very selective, correctly identifying a small number of potable samples with few false positives, but it missed most of the actual potable cases.
+
+This behavior likely results from the combination of **L1 regularization, high dropout (0.5)**, and EarlyStopping focused on precision. The model learned to avoid predicting potable unless highly confident, which improved precision but harmed recall and F1 score.
+
+Overall, the model is **conservative** — useful where false positives are costly — but not suitable if detecting as many potable sources as possible is the goal.
+
+### Insights from Experiments and Challenges Faced
+
+#### Insights
+- **High Precision Focus**: Optimizing for precision, as done with EarlyStopping, significantly reduced recall — an important tradeoff to understand.
+- **Effect of L1**: L1 regularization likely pruned many weights, simplifying the model but reducing its flexibility to capture more subtle patterns needed to identify potable water.
+- **Dropout Impact**: A 0.5 dropout rate contributed to model robustness but also may have made training harder and led to conservative behavior.
+
+#### Challenges
+- **Recall Suppression**: Despite balanced class weights, the model prioritized avoiding false positives over identifying true positives.
+- **Feature Selection Sensitivity**: L1 regularization's aggressiveness may have eliminated useful features, explaining the low recall.
+- **Hyperparameter Sensitivity**: Tuning dropout and learning rate was challenging; slight changes produced unstable training or degraded performance.
+
+#### Critical Gaps:
+- ❗ 91% of safe water sources undetected (potable recall only 8.65%)
+- ❗ Highly conservative: suitable only if missing potable water is acceptable (likely not the case in water safety applications)
+
+### Chol's Model Comparison Report
+
+### Metrics Summary
+
+| **Model**  | **Accuracy** | **Precision** | **Recall** | **F1-Score** | **AUC-ROC** |
+|------------|--------------|---------------|------------|--------------|-------------|
+| **Abiodun** | 0.7012       | 0.6940        | 0.7012     | 0.6829       | 0.6884     |
+| **Chol**    | 0.6524       | **0.8889**    | 0.0865     | 0.1576       | 0.6418     |
+| **Afsa**    | 0.6900       | 0.7000        | 0.6200     | 0.6100       | N/A        |
+| **Leslie**  | 0.6650       | 0.5890        | 0.4640     | 0.5190       | N/A        |
+| **Eddy**    | 0.6970       | 0.6940        | 0.4010     | 0.5080       | N/A        |
+
+### Interpretation of Metrics
+
+- **F1 Score**: My model’s F1 (0.1576) is the lowest, due to extremely low recall.
+- **Recall**: At 0.0865, my model recalls very few potable samples — unacceptable for this task.
+- **Precision**: My model achieves the highest precision (0.8889), showing strong selectivity.
+
+### Comparison with Each Teammate's Model
+
+#### 1. Chol vs. Abiodun
+- F1: 0.1576 vs. 0.6829 → Abiodun’s model is far superior.
+- Recall: 0.0865 vs. 0.7012 → Abiodun’s model detects far more potable samples.
+- Precision: 0.8889 vs. 0.6940 → My model is more selective but at great cost.
+
+#### 2. Chol vs. Afsa
+- F1: 0.1576 vs. 0.6100 → Afsa’s model is clearly better.
+- Recall: 0.0865 vs. 0.6200 → Afsa detects many more potable cases.
+- Precision: 0.8889 vs. 0.7000 → My model has higher precision.
+
+#### 3. Chol vs. Leslie
+- F1: 0.1576 vs. 0.5190 → Leslie’s model is better.
+- Recall: 0.0865 vs. 0.4640 → Leslie’s model recalls more potable water.
+- Precision: 0.8889 vs. 0.5890 → My model is more selective.
+
+#### 4. Chol vs. Eddy
+- F1: 0.1576 vs. 0.5080 → Eddy’s model is better.
+- Recall: 0.0865 vs. 0.4010 → Eddy recalls more potable water.
+- Precision: 0.8889 vs. 0.6940 → My model is more selective.
+
+#### Reasons for My Model’s Behavior
+
+1. **EarlyStopping on Precision**: Focusing on maximizing precision encouraged overly conservative predictions.
+2. **L1 Regularization**: Aggressively penalized weights, reducing model capacity to detect subtle potable patterns.
+3. **High Dropout**: Further limited model flexibility.
+4. **Architecture Simplicity**: Shallower architecture (64 → 32) compared to others (128 → 64 → 32) limited representational power.
+
+### Conclusion
+
+My model achieves **highest precision (0.8889)** but at the expense of recall and F1 score, making it unsuitable for this imbalanced classification task. While useful for **applications prioritizing false positive reduction**, it fails to identify enough potable water samples to be practical for public health contexts.
+
+Future work would explore:
+- Using **L2 regularization or ElasticNet** instead of pure L1  
+- Reducing dropout rate (e.g., to 0.3)  
+- Optimizing for balanced metrics like F1, not just precision  
+- Deepening the architecture (adding a 128-unit layer)  
+
