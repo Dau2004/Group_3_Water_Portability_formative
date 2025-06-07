@@ -1,4 +1,6 @@
 # Water Quality Model Analysis Report
+## Repo Link: https://github.com/Dau2004/Group_3_Water_Portability_formative.git
+
 
 ## Summary Table
 | Train Instance | Engineer Name | Regularizer | Optimizer | Early Stopping         | Dropout Rate                | Accuracy | F1 Score | Recall | Precision |
