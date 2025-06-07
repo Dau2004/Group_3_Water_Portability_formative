@@ -446,3 +446,111 @@ In future iterations, I would explore:
 - Increasing class 1 penalty weight beyond `balanced` default
 
 Overall, this project highlights the importance of thoughtful architecture, regularization, and evaluation in imbalanced binary classification problems. My model strikes a valuable trade-off and provides a strong foundation for further refinement.
+
+## Afsa Umutoniwase (Member 4)
+
+### Model Architecture & Rationale
+🔘 Regularization: Dropout (0.4, 0.3)
+I used dropout as a regularization method to combat overfitting. A 0.4 dropout was applied after the first dense layer, and 0.3 after the second. This prevents the model from relying too heavily on specific neurons and promotes more generalized representations. Given the small dataset and class imbalance, this helped reduce variance.
+
+🔘 Optimizer & Learning Rate: Adam (lr = 0.002)
+I chose the Adam optimizer for its adaptive learning capabilities and stability across noisy gradients. A learning rate of 0.002 (higher than default) helped the model learn more efficiently in early epochs while still avoiding divergence.
+
+🔘 Early Stopping: Monitored val_loss, patience = 10
+EarlyStopping helped prevent overfitting by stopping the training once validation loss stopped improving. A patience of 10 epochs gave the model enough time to escape local minima but also ensured training efficiency.
+
+🔘 Loss & Metrics
+Binary cross-entropy was used as the loss function since this was a binary classification task. The evaluation metrics included accuracy, precision, and recall to reflect class imbalance concerns.
+
+### Training Summaries, Results, and Conclusions
+
+Epochs: up to 4000 (EarlyStopping engaged)
+
+Batch Size: default (32)
+
+Activation Functions: ReLU (hidden), Sigmoid (output)
+
+#### Classification Report
+
+#### Key Performance Metrics
+| Metric         | Value |
+|----------------|--------|
+| Accuracy       | 0.69  |
+| Precision      | 0.70  |
+| Recall         | 0.62  |
+| F1-Score       | 0.61  |
+
+#### Summary and Conclusions
+
+The model achieved moderate accuracy (69%) and high precision (0.73) on potable water detection but had low recall (0.32). This means it correctly identified many non-potable cases but missed a large portion of actual potable ones.
+
+Main tradeoff: Higher confidence in positive predictions (potable), but at the expense of missing many true positives.
+
+### Insights from Experiments and Challenges Faced
+
+#### Insights
+- High Precision, Low Recall: Dropout and Adam optimizer stabilized training and improved generalization, but also made the model more cautious in flagging potable samples.
+- Dropout Regularization: Helped reduce overfitting, but may have limited the model’s ability to fully capture minority class patterns.
+- EarlyStopping Effectiveness: Prevented unnecessary training and helped maintain optimal validation loss.
+
+#### Challenges:
+
+- Class Imbalance: Skewed label distribution led to low recall. Future improvement could include class weighting or SMOTE.
+- Model Simplicity: A two-layer network may not have been deep enough to fully extract complex patterns in the data.
+
+### Afsa's Model Comparison Report
+
+### Metrics Summary
+
+| **Model**  | **Accuracy** | **Precision** | **Recall** | **F1-Score** | **AUC-ROC** |
+|------------|--------------|---------------|------------|--------------|-------------|
+| **Abiodun** | 0.7012       | 0.6940        | 0.7012     | 0.6829       | 0.6884     |
+| **Chol**    | 0.6524       | 0.8889    | 0.0865     | 0.1576       | 0.6418     |
+| **Afsa**    | 0.6900       | 0.7000        | 0.6200     | 0.6100       | N/A        |
+| **Leslie**  | 0.6650       | 0.5890        | 0.4640     | 0.5190       | N/A        |
+| **Eddy**    | 0.6970       | 0.6940        | 0.4010     | 0.5080       | N/A        |
+
+### Interpretation of Metrics
+
+- **F1 Score**:  My model’s F1 (0.6100) reflects a good balance between precision and recall.
+- **Recall**: At 0.6200, my model identifies a solid portion of potable samples — much higher than models like Chol or Eddy.
+- **Precision**: At 0.7000, my model confidently predicts potable water with a reasonable false positive rate.
+
+### Comparison with Each Teammate's Model
+#### 1. Afsa vs. Abiodun
+- F1: 0.6100 vs. 0.6829 → Abiodun’s model is stronger overall.
+- Recall: 0.6200 vs. 0.7012 → Abiodun captures more potable cases.
+- Precision: 0.7000 vs. 0.6940 → My model is slightly more selective.
+
+#### 2. Afsa vs. Chol
+- F1: 0.6100 vs. 0.1576 → My model is vastly more balanced.
+- Recall: 0.6200 vs. 0.0865 → I detect far more potable cases.
+- Precision: 0.7000 vs. 0.8889 → Chol is more conservative but misses nearly all positives.
+
+#### 3. Afsa vs. Leslie
+- F1: 0.6100 vs. 0.5190 → My model performs better overall.
+- Recall: 0.6200 vs. 0.4640 → I detect more potable samples.
+- Precision: 0.7000 vs. 0.5890 → I’m also more confident in predictions.
+
+#### 4. Afsa vs. Eddy
+- F1: 0.6100 vs. 0.5080 → I have stronger balance.
+- Recall: 0.6200 vs. 0.4010 → I detect more potable water.
+- Precision: 0.7000 vs. 0.6940 → Slight edge in selectivity.
+
+#### Reasons for My Model’s Behavior
+
+1. EarlyStopping on val_loss: Prevented overfitting but may have capped late-stage recall improvements.
+2. Dropout (0.4/0.3): Balanced regularization but possibly limited model depth.
+3. Adam Optimizer (lr=0.002): Provided fast, stable learning and contributed to good early convergence.
+4. No Class Weighting: Likely affected recall performance under class imbalance.
+
+### Conclusion
+
+My model provides a solid trade-off between precision and recall, making it practical for early-stage water quality assessments. It avoids being overly conservative like Chol’s model while not overpredicting positive labels.
+
+Future work would explore:
+- Apply class weighting or SMOTE to handle imbalance better
+- Experiment with deeper layers (e.g., 128 → 64 → 32)
+- Try L2 regularization for smoother weight decay
+- Monitor F1-score during EarlyStopping instead of val_loss
+- Tune learning rate adaptively for even better convergence
