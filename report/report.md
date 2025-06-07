@@ -11,7 +11,7 @@
 
 ## Individual Analysis Reports
 
-## Abiodun Kumuyi (Member 4)
+## Abiodun Kumuyi (Member 1)
 
 ### Model Architecture & Rationale
 
