@@ -6,7 +6,7 @@
 | Train Instance | Engineer Name | Regularizer | Optimizer | Early Stopping         | Dropout Rate                | Accuracy | F1 Score | Recall | Precision |
 |:--------------:|:-------------:|:-----------:|:---------:|:----------------------:|:---------------------------:|:--------:|:--------:|:------:|:---------:|
 | 1              | Eddy          | L1          | SGD       | Patience=10   | 0.2           | 0.697   | 0.508   | 0.401 | 0.694    |
-| 2              | Chol          | L2          | RMSprop   | Patience = 5           | 0.5                         | 0.6524   | 0.1576   | 0.0865 | 0.8889    |
+| 2              | Chol          | L1          | RMSprop   | Patience = 5           | 0.5                         | 0.6524   | 0.1576   | 0.0865 | 0.8889    |
 | 3              | Leslie        | L2        | AdamW      | Patience = 5            | 0.2                          | 0.671   | 0.567   | 0.552 | 0.582    |
 | 4              | Abiodun       | L2          | Adam      | val_loss, patience=10  | 0.5 → 0.4 → 0.365           | 0.7012   | 0.6829   | 0.7012 | 0.6940    |
 | 5              | Afsa          | Dropout       | Adam    | Patience = 10   | 0.4 (1st), 0.3 (2nd)           | 0.69   | 0.44   | 0.32 | 0.73    |
