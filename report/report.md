@@ -316,13 +316,6 @@ The model was trained for up to 4000 epochs with early stopping triggered after 
 | F1-Score       | 0.567  |
 | AUC-ROC        | N/A    |
 
-#### Summary and Conclusions
-Leslie's model achieved a well-balanced performance across all metrics. While not the highest performer overall, it maintained stable precision and recall, giving it a strong **F1-score of 0.567**. This reflects the model's ability to detect potable water samples more reliably than overly conservative models (e.g., Chol's).
-
-The architecture was simpler (64 → 32) but highly stable due to AdamW, L2, and class weights. Recall and F1 are especially improved over models that focused too much on precision.
-
-While effective, future improvements might come from increasing model depth (e.g., 128 → 64 → 32), tuning dropout progressively, or adjusting classification thresholds to better balance precision-recall trade-offs.
-
 ### Insights from Experiments and Challenges Faced
 
 ### AdamW Improved Generalization
